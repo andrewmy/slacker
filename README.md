@@ -11,5 +11,6 @@ This is a super-simple CLI Slack pinger.
 ## Usage
 
 `php slacker.php <to> <project>`
+
 `<to>`: @username or #channel
 `<project>`: project codename.
