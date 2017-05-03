@@ -1,11 +1,11 @@
 <?php
 
-if (!is_readable('./config.php')) {
+if (!is_readable(__DIR__.'/config.php')) {
     echo "Please create a config.php file like shown in config.php.dist\n";
     return 1;
 }
 
-require_once './config.php';
+require_once __DIR__.'/config.php';
 
 if (!defined('API_URL') || empty(API_URL)) {
     echo "Please set a valid API_URL\n";
