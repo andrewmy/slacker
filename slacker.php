@@ -7,8 +7,8 @@ if (!is_readable(__DIR__.'/config.php')) {
 
 require_once __DIR__.'/config.php';
 
-if (!defined('API_URL') || empty(API_URL)) {
-    echo "Please set a valid API_URL\n";
+if (!defined('API_URL') || empty(API_URL) || !defined('FROM') || empty(FROM)) {
+    echo "Please set valid API_URL and FROM in the config.php file\n";
     return 1;
 }
 
@@ -61,7 +61,7 @@ function send(
 
 if ($argc < 3 || in_array($argv[1], ['--help', '-help', '-h', '-?', 'help'])) {
     print "
-  Usage: {$argv[0]} <to> <project>
+  Usage: {$argv[0]} <to> <message>
   <to>: @username or #channel
   <message>: message.
 
@@ -81,7 +81,7 @@ if (!in_array(substr($addressee, 0, 1), ['@', '#'])) {
 }
 
 $result = send(
-    'AutoDeploy',
+    FROM,
     $addressee,
     $message.(empty(MESSAGE_COMMON) ? '' : ' '.MESSAGE_COMMON),
     [],

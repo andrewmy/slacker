@@ -2,3 +2,4 @@
 
 define('API_URL', null);
 define('MESSAGE_COMMON', '');
+define('FROM', 'Notifier');
