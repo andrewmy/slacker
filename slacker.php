@@ -63,7 +63,7 @@ if ($argc < 3 || in_array($argv[1], ['--help', '-help', '-h', '-?', 'help'])) {
     print "
   Usage: {$argv[0]} <to> <project>
   <to>: @username or #channel
-  <project>: project codename.
+  <message>: message.
 
   --help, -help, -h, -?, help: this help.
   
@@ -73,7 +73,7 @@ if ($argc < 3 || in_array($argv[1], ['--help', '-help', '-h', '-?', 'help'])) {
 }
 
 $addressee = $argv[1];
-$project = $argv[2];
+$message = $argv[2];
 
 if (!in_array(substr($addressee, 0, 1), ['@', '#'])) {
     echo "<to> must be a @username or a #channel\n";
@@ -83,7 +83,7 @@ if (!in_array(substr($addressee, 0, 1), ['@', '#'])) {
 $result = send(
     'AutoDeploy',
     $addressee,
-    $project.' deployed to WASP!',
+    $message.(empty(MESSAGE_COMMON) ? '' : ' '.MESSAGE_COMMON),
     [],
     null,
     ':robot_face:'
